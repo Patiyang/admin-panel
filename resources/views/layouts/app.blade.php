@@ -7,15 +7,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 
     <script src="https://kit.fontawesome.com/29f90c65af.js" crossorigin="anonymous"></script>
     {{-- <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet"> --}}
-    @vite(['resources/js/app.js','resources/js/bootstrap.js', 'resources/css/sidebar.css'])
+    @vite(['resources/js/app.js', 'resources/js/script.js', 'resources/css/sidebar.css'])
 
 
 </head>
 
-<body>
+{{-- <body>
     <div class="main-container d-flex">
 
         @if (Auth::check() == true)
@@ -37,7 +38,6 @@
                                 class="fa-lg fa-solid fa-comments"></i> Querries</a></li>
 
                 </ul>
-                {{-- <hr class="h-color mx-2 "> --}}
             </div>
         @endif
         <div class="content">
@@ -107,7 +107,6 @@
 
                 </div>
                 @yield('content')
-                {{-- <i class="fa-lg fa-sharp fa-solid fa-gears"></i> --}}
             </main>
         </div>
 
@@ -145,6 +144,69 @@
             $('.sidebar').removeClass('active');
         });
     </script>
+</body> --}}
+
+<body>
+    <main class="py-14">
+        @include('layouts.inc.alerts')
+        @yield('content')
+    </main>
+    <!-- navbar -->
+    <nav class="navbar">
+        <div class="logo_item">
+            <i class="bx bx-menu" id="sidebarOpen"></i>
+            {{-- <img src="images/logo.png" alt="dcd"> --}}
+
+            </i>Ally Admin
+        </div>
+
+        {{-- <div class="search_bar">
+            <input type="text" placeholder="Search" />
+        </div> --}}
+
+        <div class="navbar_content">
+            <i class="bi bi-grid"></i>
+            <i class='bx bx-sun' id="darkLight"></i>
+            <i class='bx bx-bell'></i>
+            <img src="images/profile.jpg" alt="" class="profile" />
+        </div>
+    </nav>
+
+    <!-- sidebar -->
+    <nav class="sidebar">
+        <div class="menu_content">
+            <ul class="menu_items">
+                <div class="menu_title menu_dahsboard"></div>
+                <li class="item">
+                    <div href="#" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                            <i class="bx bx-home-alt"></i>
+                        </span>
+                        <span class="navlink">Home</span>
+                    </div>
+                </li>
+                <li class="item">
+                    <div href="#" class="nav_link submenu_item">
+                        <span class="navlink_icon">
+                            <i class="bx bx-grid-alt"></i>
+                        </span>
+                        <span class="navlink">Overview</span>
+
+                    </div>
+            </ul>
+            <div class="bottom_content">
+                <div class="bottom expand_sidebar">
+                    <span> Expand</span>
+                    <i class='bx bx-log-in'></i>
+                </div>
+                <div class="bottom collapse_sidebar">
+                    <span> Collapse</span>
+                    <i class='bx bx-log-out'></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
 </body>
 
 </html>
